@@ -1,0 +1,588 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+ 
+  
+  
+  
+  
+<style>
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.audio-player-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  backround: yellow;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.audio-player {
+  background: #fff;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.audio-player-title {
+  height: 64px;
+}
+.audio-player-list-container {
+}
+.audio-player-controls-container {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
+*,
+.audio-player-wrapper,
+.audio-player-wrapper ul {
+  margin: 0;
+  padding: 0;
+}
+.audio-player-wrapper ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.audio-player-bg {
+  background: url("http://youthfest.com.np/manage/images/bg.jpg");
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-position: center;
+  z-index: -1;
+}
+
+.audio-player h1 {
+  padding: 14px 20px 20px 31px;
+  margin: 0;
+  color: #4285f4;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  font-family: "Signika", sans-serif;
+  font-weight: 500;
+}
+.audio-player h1 i {
+  font-size: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 0px;
+}
+
+.audio-player-list-container {
+    height: calc(100% - 182px);
+}
+
+.audio-player-list {
+  font-size: 18px;
+  font-family: "Arimo", sans-serif;
+  height: 100%;
+  overflow: auto;
+}
+.audio-player-list ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  cursor: pointer;
+  background: #f5f5f5;
+  padding: 15px 20px;
+  -webkit-transition: linear 0.3s;
+  -o-transition: linear 0.3s;
+  transition: linear 0.3s;
+}
+
+.audio-player-list ul li.standart-cursor:hover {
+    background: #4285f4;
+    color: white!important;
+}
+.audio-player-list ul li.standart-cursor {
+    background: #4285f4;
+    color: white!important;
+}
+
+.audio-player-list ul li.audio-item--current {
+  background: #f5f5f5;
+}
+.audio-player-list ul li:hover {
+  background: #e8e8e8;
+}
+
+
+.audio-player-list ul li div.audio-item-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-weight: 700;
+  color: #333;
+}
+.audio-player-list ul li.standart-cursor div.audio-item-title {
+ color: #fff;
+ font-weight: 500;
+}
+
+.audio-item-title-group-arrow-icon {
+ float: right!important;
+ cursor: pointer;	
+}
+
+.audio-item-title-group-arrow-icon-1 {
+	right: 40px;
+}
+
+.audio-item-title-group-arrow-icon-2 {
+	right: 80px;
+}
+
+
+
+.audio-player-list ul li.standart-cursor  {
+	    cursor: auto;
+}
+
+.audio-player-list ul li div.icon {
+  margin-right: 20px;
+  width: 50px;
+  height: 50px;
+  background: #cbcbcb;
+  text-align: center;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  line-height: 50px;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.audio-player-list ul li div.icon i {
+  font-size: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  color: #939393;
+}
+
+.audio-player-list ul li.audio-item--current div.icon {
+  background: #d2dff5;
+  opacity: 1;
+}
+
+.audio-player-list ul li.audio-item--current div.icon i {
+  color: #4285f4;
+}
+
+
+.audio-player-list ul li.audio-item--passed div.icon {
+  background: #ffffff00;
+  opacity: 1;
+}
+
+.audio-player-list ul li.audio-item--passed div.icon i {
+    color: hsl(42deg 97% 50%);
+}
+
+.audio-player-list ul li:hover .icon {
+  opacity: 1;
+}
+
+.audio-player-list ul li div.audio-item-title span:nth-child(2) {
+  font-weight: 100;
+  color: #646464;
+}
+
+.audio-player-controls .audio-player-controls--playcontrols {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.audio-player-controls .audio-player-controls--playcontrols li {
+  padding: 10px;
+  cursor: pointer;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  margin-left: 5px;
+}
+.audio-player-controls .audio-player-controls--playcontrols li i {
+  font-size: 36px;
+  color: #5a5a5a;
+}
+
+.audio-player-controls .audio-player-controls--playcontrols li:hover,
+.audio-player-controls .audio-player-controls--playcontrols li.active {
+  background: #e5e5e5;
+}
+
+.audio-player-list .audio-player-list--inner {
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.audio-player-list .audio-player-list--inner::-webkit-scrollbar {
+  width: 10px;
+  background-color: #e2e2e2;
+}
+.audio-player-controls .audio-player-controls--seekcontrols {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+	margin-top: -10px;
+    margin-bottom: 16px;
+	-webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  font-family: "Arimo", sans-serif;
+  font-size: 18px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.audio-player-controls--seekcontrols input[type="range"] {
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: none;
+  padding: 1px 2px;
+  border-radius: 5px;
+  background: #408af0;
+  outline: none;
+  vertical-align: middle;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0.15, #408af0),
+    color-stop(0.15, #c5c5c5)
+  );
+  cursor: pointer;
+}
+
+.audio-player-controls--seekcontrols input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: none;
+  border-radius: 12px;
+  background: #408af0;
+  position: relative;
+  -webkit-box-shadow: 0px 0px 0px 8px rgba(217, 232, 252, 0.7);
+  box-shadow: 0px 0px 0px 8px rgba(217, 232, 252, 0.7);
+}
+
+.audio-player-controls {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.audio-player-controls .audio-player-controls--seekcontrols li.volume-range {
+  width: 22%;
+}
+
+.audio-player-controls .audio-player-controls--seekcontrols li.volume-icon {
+  margin-left: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.audio-player-controls .audio-player-controls--seekcontrols li.volume-icon i {
+  font-size: 28px;
+  color: #5a5a5a;
+}
+
+.audio-player-list .audio-player-list--inner::-webkit-scrollbar-thumb {
+  background-color: #999;
+}
+
+.audio-player-controls .audio-player-controls--playcontrols li:first-child {
+  margin-left: 0;
+}
+
+@media screen and (max-width: 360px) {
+  .audio-player-controls {
+    padding: 10px;
+  }
+  li.track-length {
+    font-size: 12px !important;
+  }
+
+  .audio-player-controls .audio-player-controls--playcontrols li {
+    padding: 5px;
+  }
+
+  li.seek-range {
+    width: 28%;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .audio-player-title {
+    display: none;
+  }
+}
+</style>
+
+</head>
+
+<body translate="no">
+  <div class="audio-player-wrapper">
+  <div class="audio-player-bg"></div>
+  <div class="audio-player">
+  <div class="audio-player-title">
+    <h1> 
+		<span class="material-icons"> keyboard_backspace</span> &nbsp;&nbsp;&nbsp;
+		#4 Сякаева София
+	</h1>
+  </div>
+  <div class="audio-player-list-container">
+    <div class="audio-player-list">
+      <div class="audio-player-list--inner">
+        <ul>
+        
+		<li class="standart-cursor">
+            <div class="audio-item-title">
+              <span>ОБЩЕЕ ФОРТЕПИАНО</span>
+            </div>
+			<span class="audio-item-title-group-arrow-icon audio-item-title-group-arrow-icon-1 material-icons">public</span>
+			<span class="audio-item-title-group-arrow-icon audio-item-title-group-arrow-icon-2 material-icons"> keyboard_arrow_down </span>
+          </li>
+		<li class="audio-item--passed">
+        	<div class="icon">
+              <i class="material-icons">poll</i>
+            </div>
+            <div class="audio-item-title">
+              <span>#1 Эстрадно-духовой оркестр «The Color Brass»</span>
+            </div>
+          </li>
+
+		<li class="audio-item--passed">
+            <div class="icon">
+              <i class="material-icons">poll</i>
+            </div>
+            <div class="audio-item-title">
+              <span>#2 Машейко Олеся</span>
+            </div>
+          </li>
+		<li class="standart-cursor">
+            <div class="audio-item-title">
+              <span>ФОРТЕПИАНО. МЛАДШАЯ ГРУППА</span>
+            </div>
+			<span class="audio-item-title-group-arrow-icon audio-item-title-group-arrow-icon-1 material-icons">public_off</span>
+			<span class="audio-item-title-group-arrow-icon audio-item-title-group-arrow-icon-2 material-icons"> keyboard_arrow_down </span>
+
+          </li>
+		<li class="audio-item--passed">
+            <div class="icon">
+              <i class="material-icons">poll</i>
+            </div>
+            <div class="audio-item-title">
+              <span>#1 Машейко Олеся</span>
+            </div>
+          </li>
+		<li class="audio-item--passed">
+                    <div class="icon">
+              <i class="material-icons">poll</i>
+            </div>
+            <div class="audio-item-title">
+              <span>#2 Николаева Мари</span>
+            </div>
+          </li>
+		<li class="audio-item--passed">
+            <div class="icon">
+              <i class="material-icons">poll</i>
+            </div>
+            <div class="audio-item-title">
+              <span>#3 Шафикова Амалия</span>
+            </div>
+          </li>
+
+          <li class="audio-item--current">
+            <div class="icon">
+              <i class="material-icons">play_arrow</i>
+            </div>
+            <div class="audio-item-title">
+              <span>#4 Сякаева София</span>
+            </div>
+          </li>
+
+          <li>
+            <div class="icon">
+              <i class="material-icons">play_arrow</i>
+            </div>
+            <div class="audio-item-title">
+              <span>#5 Минуллина Айна</span>
+            </div>
+          </li>
+
+          <li>
+            <div class="icon">
+              <i class="material-icons">play_arrow</i>
+            </div>
+            <div class="audio-item-title">
+              <span>#6 Манжулова София</span>
+            </div>
+          </li>
+		<li class="standart-cursor">
+            <div class="audio-item-title">
+              <span>ФОРТЕПИАНО. СРЕДНЯЯ ГРУППА</span>
+            </div>
+			<span class="audio-item-title-group-arrow-icon audio-item-title-group-arrow-icon-1 material-icons">public_off</span>
+			<span class="audio-item-title-group-arrow-icon audio-item-title-group-arrow-icon-2 material-icons"> keyboard_arrow_down </span>
+          </li>
+		<li>
+            <div class="icon">
+              <i class="material-icons">play_arrow</i>
+            </div>
+            <div class="audio-item-title">
+              <span>#1 Сидоров Игорь</span>
+            </div>
+          </li>
+		<li class="audio-item--passed">
+            <div class="icon">
+              <i class="material-icons">poll</i>
+            </div>
+            <div class="audio-item-title">
+              <span>#2 Хасаншин Амир</span>
+            </div>
+          </li>
+ <li>
+            <div class="icon">
+              <i class="material-icons">play_arrow</i>
+            </div>
+            <div class="audio-item-title">
+              <span>#3 Кононова Любовь Евгеньевна</span>
+            </div>
+          </li>
+
+          <li>
+            <div class="icon">
+              <i class="material-icons">play_arrow</i>
+            </div>
+            <div class="audio-item-title">
+              <span>#4 Галиуллина Эмма Раисовна</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+  </div>
+    </div>
+  <div class="audio-player-controls-container">
+               <div class="audio-player-controls">
+      <ul class="audio-player-controls--playcontrols">
+        <li><i class="material-icons">fast_rewind</i></li>
+        <li class="play"><i class="material-icons">pause</i></li>
+        <li><i class="material-icons">fast_forward</i></li>
+		<li style="text-align: right;right: 27px;position: absolute;    top: 30px;"><i class="material-icons">leaderboard</i></li>
+      </ul>
+      <ul class="audio-player-controls--seekcontrols">
+        <li class="track-length"><span>2:25</span> / <span>3:46</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script id="rendered-js">
+$('.audio-player input[type="range"]').change(function () {
+  var val =
+  ($(this).val() - $(this).attr("min")) / (
+  $(this).attr("max") - $(this).attr("min"));
+
+  $(this).css(
+  "background-image",
+  "-webkit-gradient(linear, left top, right top, " +
+  "color-stop(" +
+  val +
+  ", #408af0), " +
+  "color-stop(" +
+  val +
+  ", #C5C5C5)" +
+  ")");
+
+});
+//# sourceURL=pen.js
+    </script>
+
+  
+
+
+
+
+ 
+</body></html>
