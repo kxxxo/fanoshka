@@ -1,7 +1,10 @@
 <html lang="en"><head>
   <meta charset="UTF-8">
  
-  
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap"
+          rel="stylesheet">
+   
   
   
   
@@ -12,6 +15,11 @@
 * {
   margin: 0;
   padding: 0;
+}
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+	color: white;
+	font-weight: 300;
 }
 .audio-player-wrapper {
   display: -webkit-box;
@@ -79,7 +87,6 @@
   display: -ms-flexbox;
   display: flex;
   align-items: center;
-  font-family: "Signika", sans-serif;
   font-weight: 500;
 }
 .audio-player h1 i {
@@ -96,7 +103,6 @@
 
 .audio-player-list {
   font-size: 18px;
-  font-family: "Arimo", sans-serif;
   height: 100%;
   overflow: auto;
 }
@@ -262,6 +268,11 @@
   font-size: 36px;
   color: #5a5a5a;
 }
+.audio-player-controls .audio-player-controls--seekcontrols li i {
+  font-size: 20px;
+  color: #5a5a5a;
+    font-style: unset;
+}
 
 .audio-player-controls .audio-player-controls--playcontrols li:hover,
 .audio-player-controls .audio-player-controls--playcontrols li.active {
@@ -298,7 +309,6 @@
   flex-wrap: nowrap;
   -ms-flex-pack: distribute;
   justify-content: space-around;
-  font-family: "Arimo", sans-serif;
   font-size: 18px;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -549,7 +559,7 @@
 		<li style="text-align: right;right: 27px;position: absolute;    top: 30px;"><i class="material-icons">leaderboard</i></li>
       </ul>
       <ul class="audio-player-controls--seekcontrols">
-        <li class="track-length"><span>2:25</span> / <span>3:46</span></li>
+        <li class="track-length"><i><span>2:25</span> / <span>3:46</span></i></li>
       </ul>
     </div>
   </div>
